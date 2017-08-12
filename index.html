@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="Person.js"></script>
+  <script src="Student.js"></script> 
+  <script src="Teacher.js"></script> 
+  <script>
+    // creating person 
+    var person = new Person("Name", "Surname", "home", "an ordinary person");
+    
+
+    // creates firts student object
+    var firstStudent = new Student(1, 3.8, 10, "Anun", "Azganun", "Campus", "a student",[40, 80],['subject1', 'subject2']);
+
+    // overriding method getFullName
+    console.log(person.getFullName());
+    console.log(firstStudent.getFullName());
+
+    // overriding method getAddress
+    console.log(person.getAddress());
+    console.log(firstStudent.getAddress());
+
+    //checks the inheritance
+    console.log(Student instanceof Person);
+    console.log(+firstStudent);
+
+    // creates second student object
+    var secondStudent = new Student(1, 2.7, 15, "Bad", "Student", "Campus", "a student", [60, 70], ['subject1', 'subject4']);
+
+    // creates third student object
+    var thirdStudent = new Student(1, 4.0, 3, "Perfect", "Student", "Campus", "a student", [80, 90], ['subject2', 'subject3']);
+
+
+    // calculates the middle grade of students
+    var students = [firstStudent, secondStudent, thirdStudent]; 
+    var length = students.length; 
+
+    var midGpa = 0;
+    for(var it = 0; it < length; it++) {
+       midGpa+= +students[it];
+    };
+    midGpa/= length;
+    console.log("The middle gpa grade is: " + midGpa); 
+
+
+    console.log("The students list:\n");
+    for(var it = 0; it < length; it++) {
+       console.log(students[it].toString()); 
+    };
+     
+    midAbscence = 0;
+    for(var it = 0; it < length; it++) {
+      if (students[it].hasOwnProperty("absenceCount")) {
+        midAbscence+= students[it].absenceCount;
+      }
+    }
+    midAbscence/= length; 
+    console.log("The middle abscence count is " + parseInt(midAbscence)); 
+
+    firstStudent.getStudentKeys();
+    
+    //creates a teacher object
+    var teacher = new Teacher(1, "Math", "CIS", 999, "Usucich", "Usucich", "Yerevan", "a teacher"); 
+    console.log(teacher.getFullName());
+    console.log(teacher.getAddress());
+    console.log(teacher.getDescription());
+
+    console.log('Properties of teacher class');
+    Object.defineProperty(teacher, "numberOfSubjects", { value: "10", configurable: true, writable: true, enumerable: true });
+    
+    teacher.getTeacherKeys();
+
+    /*
+    //Object.assign method call
+    var secondTeacher = new Teacher(2, "Algorithms", "CIS", 888, "Name", "Surname", "Yerevan", "a teacher"); 
+    var thirdTeacher = new Teacher(3, "Data Structures", "CIS", 777, "Anun", "Azganun", "Yerevan", "a teacher");  
+    Object.assign(secondTeacher, thirdTeacher); 
+
+    console.log(secondTeacher.toString());
+   
+
+    var midGrade = Object.getOwnPropertyDescriptor(Student.prototype, "midGrade");
+    console.log(midGrade);
+    console.log(firstStudent.midGrade());
+    console.log(firstStudent.listSubjects()); 
+
+    console.log(Object.getOwnPropertyNames(firstStudent));
+
+    var o = Object.freeze(firstStudent);
+    console.log(o === firstStudent) // returns true
+
+    Object.isFrozen(firstStudent); // === true
+    // Now any changes will fail
+    firstStudent.policy1 = 'policy1'; // silently does nothing
+    // silently doesn't add the property
+    firstStudent.policy2 = 'policy2';
+    
+    // In strict mode such attempts will throw TypeErrors
+   function fail(){
+   'use strict';
+   firstStudent.policy1 = 'policy1'; // throws a TypeError
+   delete firstStudent.policy1; // throws a TypeError
+   obj.policy2 = 'policy2'; // throws a TypeError
+   }
+ 
+   fail();
+
+   // Attempted changes through Object.defineProperty; 
+   // both statements below throw a TypeError.
+   Object.defineProperty(firstStudent, 'property1', { value: 17 });
+   Object.defineProperty(SecondStudent, 'property2', { value: 'somevalue' });
+
+   secondStudent.policy1 = 'policy1'; 
+   var o = Object.seal(secondStudent);
+   o === secondStudent; // true
+
+   Object.isSealed(secondStudent); // === true 
+
+   // Changing property values on a sealed object
+   // still works.
+   secondStudent.policy1 = 'policy1';
+ 
+   // But you can't convert data properties to accessors,
+   // or vice versa.
+   Object.defineProperty(secondStudent, 'policy1', {
+    get: function() { return 'policy1'; } 
+   }); // throws a TypeError
+
+   // Now any changes, other than to property values,
+   // will fail.
+   firstStudent.policy3 = 'policy3';
+   // silently doesn't add the property
+
+   delete secondStudent.policy1;
+  // silently doesn't delete the property
+
+
+   // In strict mode such attempts
+   // will throw TypeErrors.
+  function fail() {
+   'use strict';
+   delete secondStudent.policy1; // throws a TypeError
+   secondStudent.policy4 = 'policy4'; // throws a TypeError
+  }
+  
+  fail();
+
+   // Attempted additions through
+  // Object.defineProperty will also throw.
+
+   Object.defineProperty(secondStudent, 'coolPolicy', {
+     value: 'cool policy'
+   }); // throws a TypeError
+
+   Object.defineProperty(secondStudent, 'policy1', {
+     value: 'policy1'
+   }); // changes existing property value   
+
+
+  */
+  </script> 
+
+</head>
+<body>
+
+</body>
+
+</html>
